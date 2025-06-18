@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head xmlns:th="http://www.thymeleaf.org">
+    <meta charset="UTF-8">
+    <title>Логин</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <style>
+        body {
+            background-color: #fff3e0;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-wrapper {
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .login-card {
+            background-color: #fff8f0;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 12px 30px rgba(204, 119, 34, 0.2);
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #f0d5c9;
+        }
+
+        .form-label span {
+            font-weight: 600;
+            color: #8c4a2f;
+        }
+
+        .form-control {
+            border-radius: 0.375rem;
+            border-color: #eac3a1;
+            background-color: #fffaf5;
+            color: #5b3a29;
+        }
+
+        .form-control:focus {
+            border-color: #e48f65;
+            box-shadow: 0 0 0 0.2rem rgba(228, 143, 101, 0.25);
+        }
+
+        .btn-dark {
+            background-color: #d96c3f;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-dark:hover {
+            background-color: #bf4d24;
+        }
+
+        .error-container {
+            background-color: #fbeaea;
+            border-left: 6px solid #e57a63;
+            border-radius: 1rem;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 16px rgba(200, 60, 50, 0.1);
+            color: #8c2e23;
+            font-size: 1.05rem;
+        }
+
+        .error-container p {
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .error-container p::before {
+            content: "❗ ";
+            font-size: 1.25rem;
+            margin-right: 0.5rem;
+        }
+
+        .action-links {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .action-links a {
+            display: inline-block;
+            margin: 0.25rem 0.75rem;
+            padding: 0.45rem 1.1rem;
+            border: 2px solid #d96c3f;
+            color: #d96c3f;
+            background-color: transparent;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .action-links a:hover {
+            background-color: #fff3e8;
+            color: #bf4d24;
+            border-color: #bf4d24;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid d-flex justify-content-center align-items-center login-wrapper">
+    <div class="login-card">
+
+        <!-- Уютный блок с ошибкой -->
+        <div th:if="${error}" class="error-container">
+            <p th:text="${error}">Неверный пароль</p>
+        </div>
+
+        <h2 class="mb-4 text-center" style="color: #a04e2b;">Авторизация клиента</h2>
+
+        <form method="post" action="/login">
+            <div class="mb-3">
+                <label for="phone" class="form-label"><span>Номер телефона</span></label>
+                <input type="text" required name="phone" id="phone" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label"><span>Пароль</span></label>
+                <input type="password" required name="password" id="password" class="form-control" />
+            </div>
+
+            <div class="mt-3">
+                <button type="submit" class="btn btn-dark w-100">Войти</button>
+            </div>
+        </form>
+
+        <!-- Красивые кнопки снизу -->
+        <div class="action-links">
+            <a th:href="@{/register}">Регистрация</a>
+            <a th:href="@{/login/loginMaster}">Войти как мастер</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

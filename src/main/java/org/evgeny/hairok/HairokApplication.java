@@ -8,7 +8,6 @@ public class HairokApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HairokApplication.class, args);
-        System.out.println("Привет кнут");
     }
 
 }
