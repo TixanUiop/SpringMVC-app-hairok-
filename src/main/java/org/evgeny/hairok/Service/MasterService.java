@@ -47,13 +47,13 @@ public class MasterService implements UserDetailsService {
     }
 
     //TODO разобрать пагинацию
-    public List<MasterProfilesDTO> getPageAllMasterProfiles(Pageable pageable) {
-        List<MasterProfilesDTO> allMasterProfiles = getAllMasterProfiles();
-
-        int sizeOfMasterProfiles = allMasterProfiles.size();
-        int start = pageable.getNumberOfPages()
-
-    }
+//    public List<MasterProfilesDTO> getPageAllMasterProfiles(Pageable pageable) {
+//        List<MasterProfilesDTO> allMasterProfiles = getAllMasterProfiles();
+//
+//        int sizeOfMasterProfiles = allMasterProfiles.size();
+//        int start = pageable.getNumberOfPages()
+//
+//    }
 
 
 

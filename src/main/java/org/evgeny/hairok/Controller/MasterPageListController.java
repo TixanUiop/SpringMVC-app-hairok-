@@ -21,16 +21,16 @@ public class MasterPageListController {
 
     private final MasterService masterService;
 
-    @GetMapping
-    public String getMasterList(Model model, @PageableDefault(size = 10) Pageable pageable) {
-
-        //List<MasterProfilesDTO> allMasterProfiles = masterService.getAllMasterProfiles();
-        List<MasterProfilesDTO> pageAllMasterProfiles = masterService.getPageAllMasterProfiles(pageable);
-
-
-        model.addAttribute("masterProfiles", pageAllMasterProfiles);
-        return "Dashboards/clint-dashboard-master-list";
-    }
+//    @GetMapping
+//    public String getMasterList(Model model, @PageableDefault(size = 10) Pageable pageable) {
+//
+//        //List<MasterProfilesDTO> allMasterProfiles = masterService.getAllMasterProfiles();
+//        //List<MasterProfilesDTO> pageAllMasterProfiles = masterService.getPageAllMasterProfiles(pageable);
+//
+//
+//        model.addAttribute("masterProfiles", pageAllMasterProfiles);
+//        return "Dashboards/clint-dashboard-master-list";
+//    }
 
 
 
