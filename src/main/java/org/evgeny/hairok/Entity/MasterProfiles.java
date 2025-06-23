@@ -30,6 +30,7 @@ public class MasterProfiles extends BaseEntity{
     String city;
 
     @OneToMany
+    @JoinColumn(name = "id")
     List<MasterRating> rate;
 
     @CreatedBy

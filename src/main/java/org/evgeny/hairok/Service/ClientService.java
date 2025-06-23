@@ -23,7 +23,7 @@ public class ClientService implements UserDetailsService {
         Optional<Client> byPhone = clientRepository.findByPhone(phone);
 
         return byPhone.map(user -> new org.springframework.security.core.userdetails.User(
-            user.getName(),
+            user.getPhone(),
             user.getPassword(),
             Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
         ))

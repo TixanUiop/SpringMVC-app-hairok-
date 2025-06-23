@@ -1,0 +1,38 @@
+<div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:fragment="mainHeader">
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+        <a class="navbar-brand" href="#">💇 Hairok</a>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/masters-page-list}">Выбор мастера</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/history}">История записей</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Новая кнопка (скоро)</a>
+                </li>
+
+            </ul>
+
+            <div class="d-flex align-items-center text-white me-3">
+                <div class="me-3 text-end">
+                    <div th:if="${user != null}">
+                        <div th:text="'Номер: ' + ${user.username}"></div>
+                    </div>
+                </div>
+
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-outline-light btn-sm">Выход</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+</div>

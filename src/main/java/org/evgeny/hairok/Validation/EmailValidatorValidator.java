@@ -15,7 +15,7 @@ public class EmailValidatorValidator implements ConstraintValidator<EmailMatcher
         if (registerMasterAccountDTO.getEmail() == null) {
             return false;
         }
-        Matcher matcher = Pattern.compile("^[A-Za-z]+@[A-Za-z]{2,}\\.[A-Za-z]{2,10}$").matcher(registerMasterAccountDTO.getEmail());
+        Matcher matcher = Pattern.compile("^[A-Za-z0-9._-]+@[A-Za-z]{2,}\\.[A-Za-z]{2,10}$").matcher(registerMasterAccountDTO.getEmail());
         return matcher.matches();
     }
 }

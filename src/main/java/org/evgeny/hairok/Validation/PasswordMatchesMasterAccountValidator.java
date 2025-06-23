@@ -2,10 +2,8 @@ package org.evgeny.hairok.Validation;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import org.evgeny.hairok.DTO.RegisterClientDTO;
 import org.evgeny.hairok.DTO.RegisterMasterAccountDTO;
 import org.evgeny.hairok.Validation.Annotation.PasswordMatcherMasterAccount;
-import org.evgeny.hairok.Validation.Annotation.PasswordMatches;
 
 public class PasswordMatchesMasterAccountValidator implements ConstraintValidator<PasswordMatcherMasterAccount, RegisterMasterAccountDTO> {
     @Override

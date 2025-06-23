@@ -25,6 +25,14 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class Client extends BaseEntity {
 
+    String name;
+    String surname;
+    String patronymic;
+    LocalDate birthday;
+    String phone;
+    String city;
+    String password;
+
     @CreatedBy
     @Column(name = "created_by")
     private String createdBy;
@@ -40,12 +48,4 @@ public class Client extends BaseEntity {
     @Column(name = "Modified_at")
     @LastModifiedDate
     private LocalDate modifiedAt;
-
-    String name;
-    String surname;
-    String patronymic;
-    LocalDate birthday;
-    String phone;
-    String city;
-    String password;
 }

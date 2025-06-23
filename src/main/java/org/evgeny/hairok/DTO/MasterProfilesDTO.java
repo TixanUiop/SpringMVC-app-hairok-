@@ -11,6 +11,7 @@ import org.evgeny.hairok.Validation.Annotation.PhoneRegexPatternMaster;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -21,6 +22,8 @@ import java.time.LocalDate;
 public class MasterProfilesDTO {
 
     MultipartFile avatar;
+
+    Long id;
 
     @NotBlank(message = "Имя не может быть пустым")
     String name;
@@ -40,6 +43,10 @@ public class MasterProfilesDTO {
 
     @NotBlank(message = "Город не может быть пустым")
     String city;
+
+    List<MasterRatingDTO> rating;
+
+    Double averageRating;
 
 
 }

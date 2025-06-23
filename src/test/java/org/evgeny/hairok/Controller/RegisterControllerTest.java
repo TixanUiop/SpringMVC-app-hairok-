@@ -27,9 +27,10 @@ class RegisterControllerTest {
                 .param("surname", "Иванов")
                 .param("patronymic", "Иванович")
                 .param("birthday", "2000-01-01")
-                .param("phone", "1234567890")
+                .param("phone", "+375292927452")
                 .param("city", "Москва")
-                .param("password", "secret123"))
+                .param("password", "secret123")
+                        .param("passwordRep", "secret123"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("/Register/client-register"));
 
