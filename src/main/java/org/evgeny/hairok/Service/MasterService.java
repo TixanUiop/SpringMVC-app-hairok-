@@ -8,6 +8,9 @@ import org.evgeny.hairok.Entity.SimpleGrantedAuthority;
 import org.evgeny.hairok.Mapper.MasterProfilesToDTO;
 import org.evgeny.hairok.Repository.MasterAccountRepository;
 import org.evgeny.hairok.Repository.MasterProfilesRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -46,14 +49,18 @@ public class MasterService implements UserDetailsService {
         return list;
     }
 
-    //TODO разобрать пагинацию
-//    public List<MasterProfilesDTO> getPageAllMasterProfiles(Pageable pageable) {
-//        List<MasterProfilesDTO> allMasterProfiles = getAllMasterProfiles();
-//
-//        int sizeOfMasterProfiles = allMasterProfiles.size();
-//        int start = pageable.getNumberOfPages()
-//
-//    }
+    public Page<MasterProfilesDTO> getPageAllMasterProfiles(Pageable pageable) {
+        List<MasterProfilesDTO> allMasterProfiles = getAllMasterProfiles();
+
+        int sizeOfMasterProfiles = allMasterProfiles.size();
+        int start = (int) pageable.getOffset();
+
+        int end = Math.min((start + pageable.getPageSize()), sizeOfMasterProfiles);
+
+        List<MasterProfilesDTO> pageContent = allMasterProfiles.subList(start, end);
+
+        return new PageImpl<>(pageContent, pageable, sizeOfMasterProfiles);
+    }
 
 
 
