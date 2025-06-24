@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.data.domain.Pageable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/masters-page-list")
@@ -20,9 +21,12 @@ public class MasterPageListController {
     private final MasterService masterService;
 
     @GetMapping
-    public String getMasterList(Model model, @PageableDefault(size = 10) Pageable pageable) {
+    public String getMasterList(Model model, @PageableDefault(size = 10) Pageable pageable,
+                                @RequestParam(required = false) String search,
+                                @RequestParam(required = false) String searchByCity)
+    {
 
-        Page<MasterProfilesDTO> pageAllMasterProfiles = masterService.getPageAllMasterProfiles(pageable);
+        Page<MasterProfilesDTO> pageAllMasterProfiles = masterService.getPageAllMasterProfiles(pageable, search, searchByCity);
 
         model.addAttribute("page", pageAllMasterProfiles);
         model.addAttribute("masterProfiles", pageAllMasterProfiles);

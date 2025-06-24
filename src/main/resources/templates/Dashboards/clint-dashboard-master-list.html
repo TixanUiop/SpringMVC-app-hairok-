@@ -34,7 +34,7 @@
     <!-- Фильтрация и сортировка -->
     <div class="row filters align-items-end">
         <div class="col-md-6">
-            <form method="get" th:action="@{/masters}">
+            <form method="get" th:action="@{/masters-page-list}">
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" placeholder="Поиск по имени..."
                            th:value="${param.search}">
@@ -44,15 +44,16 @@
         </div>
 
         <div class="col-md-4">
-            <form method="get" th:action="@{/masters}">
-                <div class="form-group">
-                    <select class="form-select" name="sort">
-                        <option value="rating">Сортировать по рейтингу</option>
-                        <option value="name">Сортировать по имени</option>
-                    </select>
+            <form method="get" th:action="@{/masters-page-list}">
+                <div class="input-group">
+                    <input type="text" name="searchByCity" class="form-control" placeholder="Поиск по городу..."
+                           th:value="${param.searchByCity}">
+                    <button type="submit" class="btn btn-outline-primary">Искать</button>
                 </div>
             </form>
         </div>
+
+
     </div>
 
     <div th:if="${#lists.isEmpty(page.content)}" class="alert alert-warning">

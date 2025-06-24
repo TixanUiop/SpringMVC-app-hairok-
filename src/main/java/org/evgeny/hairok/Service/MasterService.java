@@ -49,8 +49,22 @@ public class MasterService implements UserDetailsService {
         return list;
     }
 
-    public Page<MasterProfilesDTO> getPageAllMasterProfiles(Pageable pageable) {
+    public Page<MasterProfilesDTO> getPageAllMasterProfiles(Pageable pageable, String search, String searchByCity) {
+
         List<MasterProfilesDTO> allMasterProfiles = getAllMasterProfiles();
+
+        if (search != null && !search.isBlank()) {
+            String loverCase = search.toLowerCase();
+            allMasterProfiles = allMasterProfiles.stream().filter(masterProfile -> masterProfile.getName().toLowerCase().contains(loverCase))
+                    .toList();
+        }
+
+        if (searchByCity != null && !searchByCity.isBlank()) {
+            String loverCase = searchByCity.toLowerCase();
+            allMasterProfiles = allMasterProfiles.stream().filter(masterProfile -> masterProfile.getCity().toLowerCase().contains(loverCase))
+                    .toList();
+        }
+
 
         int sizeOfMasterProfiles = allMasterProfiles.size();
         int start = (int) pageable.getOffset();
